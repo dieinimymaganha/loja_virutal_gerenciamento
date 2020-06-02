@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Gerente Loja',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.redAccent
+        primaryColor: Colors.lightBlueAccent
       ),
       home: LoginScreen(),
     );

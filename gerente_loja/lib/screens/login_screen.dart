@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                   Icon(
                     Icons.store_mall_directory,
-                    color: Colors.redAccent,
+                    color: Theme.of(context).primaryColor,
                     size: 160.0,
                   ),
                   InputField(
@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                       child: Text('Entrar'),
                       textColor: Colors.white,
-                      color: Colors.redAccent,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ],

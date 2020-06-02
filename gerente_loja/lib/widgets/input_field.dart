@@ -18,7 +18,7 @@ class InputField extends StatelessWidget {
           hintText: hint,
           hintStyle: TextStyle(color: Colors.white),
           focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.redAccent)),
+              borderSide: BorderSide(color: Theme.of(context).primaryColor)),
           contentPadding: EdgeInsets.only(
             left: 5,
             right: 30,
