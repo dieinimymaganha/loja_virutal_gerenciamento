@@ -12,6 +12,7 @@ class UsersTab extends StatelessWidget {
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
                 hintText: 'Pesquisar',
+                hintStyle: TextStyle(color: Colors.white),
                 icon: Icon(Icons.search, color: Colors.white),
                 border: InputBorder.none),
           ),
@@ -21,7 +22,7 @@ class UsersTab extends StatelessWidget {
             itemBuilder: (context, index) {
               return UserTile();
             },
-            separatorBuilder: (context, index){
+            separatorBuilder: (context, index) {
               return Divider();
             },
             itemCount: 5,
