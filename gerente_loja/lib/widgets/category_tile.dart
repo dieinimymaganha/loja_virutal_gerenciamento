@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gerente_loja/screens/product_screen.dart';
 
 class CategoryTile extends StatelessWidget {
   final DocumentSnapshot category;
@@ -33,19 +34,33 @@ class CategoryTile extends StatelessWidget {
                         backgroundImage: NetworkImage(doc.data['images'][0]),
                       ),
                       title: Text(doc.data['title']),
-                      trailing: Text('R\$: ${doc.data['price'].toStringAsFixed(2)}'),
-                      onTap: (){},
+                      trailing:
+                          Text('R\$: ${doc.data['price'].toStringAsFixed(2)}'),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ProductScreen(
+                                  categoryId: category.documentID,
+                                  product: doc,
+                                )));
+                      },
                     );
-                  }).toList()..add(
-                    ListTile(
+                  }).toList()
+                    ..add(ListTile(
                       leading: CircleAvatar(
                         backgroundColor: Colors.transparent,
-                        child: Icon(Icons.add, color: Theme.of(context).primaryColor,),
+                        child: Icon(
+                          Icons.add,
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
                       title: Text('Adicionar'),
-                      onTap: (){},
-                    )
-                  ),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ProductScreen(
+                                  categoryId: category.documentID,
+                                )));
+                      },
+                    )),
                 );
               },
             )
