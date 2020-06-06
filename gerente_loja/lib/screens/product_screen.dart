@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerente_loja/blocs/product_bloc.dart';
 import 'package:gerente_loja/validators/product_validator.dart';
+import 'package:gerente_loja/widgets/add_product_size.dart';
 import 'package:gerente_loja/widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -52,22 +53,24 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
           StreamBuilder<bool>(
             stream: _productBloc.outCreated,
             initialData: false,
-            builder: (context, snapshot){
-              if(snapshot.data)
+            builder: (context, snapshot) {
+              if (snapshot.data)
                 return StreamBuilder<bool>(
                     stream: _productBloc.outLoading,
                     initialData: false,
                     builder: (context, snapshot) {
                       return IconButton(
                         icon: Icon(Icons.remove),
-                        onPressed: snapshot.data ? null : (){
-                          _productBloc.deleteProduct();
-                          Navigator.of(context).pop();
-                        },
+                        onPressed: snapshot.data
+                            ? null
+                            : () {
+                                _productBloc.deleteProduct();
+                                Navigator.of(context).pop();
+                              },
                       );
-                    }
-                );
-              else return Container();
+                    });
+              else
+                return Container();
             },
           ),
           StreamBuilder<bool>(
@@ -127,6 +130,19 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                             TextInputType.numberWithOptions(decimal: true),
                         validator: validatePrice,
                       ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      Text(
+                        'Tamanhos',
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
+                      ProductsSizes(
+                        initialValue: snapshot.data['size'] ,
+                        onSaved: (s){},
+                        validator: (s){},
+                      ),
+
                     ],
                   );
                 }),
