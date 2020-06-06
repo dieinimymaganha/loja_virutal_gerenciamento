@@ -16,7 +16,7 @@ class ProductBloc extends BlocBase {
     if (product != null) {
       unsaveData = Map.of(product.data);
       unsaveData['images'] = List.of(product.data['images']);
-      unsaveData['images'] = List.of(product.data['size']);
+      unsaveData['size'] = List.of(product.data['size']);
     }else{
       unsaveData = {
         'title' : null,
