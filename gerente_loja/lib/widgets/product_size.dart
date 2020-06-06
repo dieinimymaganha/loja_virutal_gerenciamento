@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'add_size_dialog.dart';
+
 class ProductsSizes extends FormField<List> {
   ProductsSizes({
+    BuildContext context,
     List initialValue,
     FormFieldSetter<List> onSaved,
     FormFieldValidator<List> validator,
@@ -39,7 +42,9 @@ class ProductsSizes extends FormField<List> {
                     );
                   }).toList()
                     ..add(GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showDialog(context: context, builder:(context) => AddSizeDialog());
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius:

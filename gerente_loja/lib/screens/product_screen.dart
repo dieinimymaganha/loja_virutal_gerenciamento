@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerente_loja/blocs/product_bloc.dart';
 import 'package:gerente_loja/validators/product_validator.dart';
-import 'package:gerente_loja/widgets/add_product_size.dart';
+import 'package:gerente_loja/widgets/product_size.dart';
 import 'package:gerente_loja/widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -138,6 +138,7 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                         style: TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                       ProductsSizes(
+                        context: context,
                         initialValue: snapshot.data['size'] ,
                         onSaved: (s){},
                         validator: (s){},
