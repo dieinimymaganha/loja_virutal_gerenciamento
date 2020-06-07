@@ -6,6 +6,7 @@ import 'package:gerente_loja/blocs/user_bloc.dart';
 import 'package:gerente_loja/tabs/orders_tab.dart';
 import 'package:gerente_loja/tabs/products_tab.dart';
 import 'package:gerente_loja/tabs/users_tab.dart';
+import 'package:gerente_loja/widgets/edit_category_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -122,6 +123,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () =>
                     _ordersBloc.setOrderCriteria(SortCriteria.READY_FIRST)),
           ],
+        );
+      case 2:
+        return FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Theme.of(context).primaryColor,
+          onPressed: () {
+            showDialog(
+                context: context, builder: (context) => EditCategoryDialog());
+          },
         );
     }
   }
