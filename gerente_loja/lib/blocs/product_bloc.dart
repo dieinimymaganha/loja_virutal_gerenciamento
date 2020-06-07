@@ -54,6 +54,10 @@ class ProductBloc extends BlocBase {
     unsaveData['images'] = images;
   }
 
+  void saveSizes(List sizes) {
+    unsaveData['size'] = sizes;
+  }
+
   @override
   void dispose() {
     _dataController.close();

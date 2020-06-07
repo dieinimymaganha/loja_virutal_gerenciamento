@@ -42,14 +42,21 @@ class ProductsSizes extends FormField<List> {
                     );
                   }).toList()
                     ..add(GestureDetector(
-                      onTap: () {
-                        showDialog(context: context, builder:(context) => AddSizeDialog());
+                      onTap: () async {
+                        String size = await showDialog(
+                            context: context,
+                            builder: (context) => AddSizeDialog());
+                        if (size != null)
+                          state.didChange(state.value..add(size));
                       },
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(4.0)),
-                            border: Border.all(color: Colors.lightBlueAccent)),
+                            border: Border.all(
+                                color: state.hasError
+                                    ? Colors.red
+                                    : Colors.lightBlueAccent)),
                         alignment: Alignment.center,
                         child: Text(
                           '+',

@@ -139,11 +139,13 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                       ),
                       ProductsSizes(
                         context: context,
-                        initialValue: snapshot.data['size'] ,
-                        onSaved: (s){},
-                        validator: (s){},
-                      ),
+                        initialValue: snapshot.data['size'],
+                        onSaved: _productBloc.saveSizes,
+                        validator: (s) {
+                          if (s.isEmpty) return 'Adicione um tamanho';
 
+                        },
+                      ),
                     ],
                   );
                 }),
